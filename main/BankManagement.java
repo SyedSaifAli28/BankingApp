@@ -1,4 +1,4 @@
-package banking;
+package test;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -176,9 +176,9 @@ public class BankManagement {
             ps.setInt(1, sender_ac);
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()
-                    && rs.getInt("balance") < amount) {
+            if (rs.next() && rs.getInt("balance") < amount) {
                 System.out.println("Insufficient Balance!");
+                con.rollback();
                 return false;
             }
 
