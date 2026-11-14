@@ -1,4 +1,4 @@
-package banking;
+package classes;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,7 +7,7 @@ import java.sql.*;
 public class BankManagement {
 
     private static final int NULL = 0;
-    static Connection con
+    public static Connection con
             = DatabaseConnection.getConnection();
     // Create Account
     public static boolean createAccount(String name,
@@ -176,9 +176,9 @@ public class BankManagement {
             ps.setInt(1, sender_ac);
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()
-                    && rs.getInt("balance") < amount) {
+            if (rs.next() && rs.getInt("balance") < amount) {
                 System.out.println("Insufficient Balance!");
+                con.rollback();
                 return false;
             }
 
