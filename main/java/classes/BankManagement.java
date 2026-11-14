@@ -1,4 +1,4 @@
-package test;
+package classes;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,7 +7,7 @@ import java.sql.*;
 public class BankManagement {
 
     private static final int NULL = 0;
-    static Connection con
+    public static Connection con
             = DatabaseConnection.getConnection();
     // Create Account
     public static boolean createAccount(String name,
